@@ -2,11 +2,10 @@
 
 LAST UPDATED: [Arvid Lundervold](https://www.uib.no/en/persons/Arvid.Lundervold), 2023-05-31
 
-Code and data accompanying the paper A.J. Lundervold, ..., A. Lundervold. "Assessment of self-reported executive function in irritable bowel syndrome using a machine learning framework"<br>
-_Journal of Clinical Medicine_ 2023;12:3771 <br>
+Code and [data](./data/questionnaire_BRIEF_and_more_66x18.csv) accompanying the paper: A.J. Lundervold, ..., A. Lundervold. "Assessment of self-reported executive function in irritable bowel syndrome using a machine learning framework" _Journal of Clinical Medicine_ 2023;12:3771 <br>
 
-Website: https://www.mdpi.com/2077-0383/12/11/3771<br>
-PDF Version: https://www.mdpi.com/2077-0383/12/11/3771/pdf<br>
+**Website**: https://www.mdpi.com/2077-0383/12/11/3771<br>
+**PDF Version**: https://www.mdpi.com/2077-0383/12/11/3771/pdf<br>
 Overleaf Version: https://www.overleaf.com/project/64633e1ad925e61795ca94f4 (restricted access)<br>
 
 
