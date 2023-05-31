@@ -1,13 +1,14 @@
 # BRIEF-IBS
 
-LAST UPDATED: [Arvid Lundervold](https://www.uib.no/en/persons/Arvid.Lundervold), 2023-05-30
+LAST UPDATED: [Arvid Lundervold](https://www.uib.no/en/persons/Arvid.Lundervold), 2023-05-31
 
-Code accompanying the paper "Assessment of self-reported executive function in irritable bowel syndrome using a machine learning framework"<br>
-Accepted 27 May 2023, to appear in _Journal of Clinical Medicine_, 2023. <br>
-Overleaf: https://www.overleaf.com/project/64633e1ad925e61795ca94f4 (restricted access)
+Code and data accompanying the paper A.J. Lundervold, ..., A. Lundervold. "Assessment of self-reported executive function in irritable bowel syndrome using a machine learning framework"<br>
+_Journal of Clinical Medicine_ 2023;12:3771 <br>
 
+Website: https://www.mdpi.com/2077-0383/12/11/3771<br>
+PDF Version: https://www.mdpi.com/2077-0383/12/11/3771/pdf<br>
+Overleaf Version: https://www.overleaf.com/project/64633e1ad925e61795ca94f4 (restricted access)<br>
 
-<img src="./assets/jmc_paper_title_authors.png" width="600">
 
 
 ### The conda environment:
