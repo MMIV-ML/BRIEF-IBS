@@ -1,0 +1,620 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[jcm,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
+
+
+%=================================================================
+% MDPI internal commands - do not modify
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2023}
+\copyrightyear{2023}
+%\externaleditor{Academic Editor: Firstname Lastname}
+\datereceived{ } 
+\daterevised{ } % Comment out if no revised date
+\dateaccepted{ } 
+\datepublished{ } 
+%\datecorrected{} % For corrected papers: "Corrected: XXX" date in the original paper.
+%\dateretracted{} % For corrected papers: "Retracted: XXX" date in the original paper.
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+%\pdfoutput=1 % Uncommented for upload to arXiv.org
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, float, amsmath, amssymb, lineno, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, colortbl, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, array, tabularx, pbox, ragged2e, tocloft, marginnote, marginfix, enotez, amsthm, natbib, hyperref, cleveref, scrextend, url, geometry, newfloat, caption, draftwatermark, seqsplit
+% cleveref: load \crefname definitions after \begin{document}
+\usepackage{comment}
+%=================================================================
+% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
+%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
+
+%=================================================================
+% Full title of the paper (Capitalized)
+%\Title{Self-reported executive function in patients with irritable bowel syndrome}
+
+\Title{Assessment of self-reported executive function in patients with irritable bowel syndrome using a machine learning framework \footnotesize{rev.1}}
+
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Assessment of self-reported executive function in patients with irritable bowel syndrome using a machine learning framework }
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
+\newcommand{\orcidauthorB}{0000-0000-0000-000X} % Add \orcidB{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{Astri J Lundervold $^{1}$*\orcidA{0000-0002-6819-6164}, Eline M R Hillestad $^{2,3}$\orcidA{0000-0002-4155-294X}, Gülen Arslan Lied $^{2,3}$\orcidA{0000-0002-1827-5008}, Julie Billing $^{1}$, Tina E  Johnsen $^{1}$, 
+ Elisabeth K Steinsvik $^{2,3}$\orcidA{0000-0002-8371-1988},
+Trygve Hausken $^{2}$\orcidA{0000-0001-7080-8396}, Birgitte Berentsen $^{2,3}$\orcidA{0000-0003-3574-7078} and Arvid Lundervold $^{4,5}$\orcidA{0000-0002-0032-4182}}
+
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+%\AuthorNames{Astri J. Lundervold, Eline M Hillestad, Julie BillingFirstname Lastname and Arvid Lundervold}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{Lundervold, A.J. et al.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ \quad Department of Biological and Medical Psychology, University of Bergen, Bergen, Norway; astri.lundervold@uib.no\\
+$^{2}$ \quad Department of Clinical Medicine, University of Bergen, Bergen 5021, Norway\\
+$^{3}$ \quad National Center for Functional Gastrointestinal Disorders, Department of Medicine, Haukeland University Hospital, Bergen 5021, Norway\\
+$^{4}$ \quad Department of Biomedicine, University of Bergen, Bergen, Norway\\
+$^{5}$ \quad Mohn Medical Imaging and Visualization Center, Department of Radiology, Haukeland University Hospital, Bergen, Norway}
+% Contact information of the corresponding author
+
+\corres{Correspondence: Astri.lundervold@uib.no, Department of Biological and Medical Psychology, University of Bergen, Jonas Lies vei 91, 5009 Bergen, Norway}
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Jonas Lies vei 91, 5009 Bergen, Norway.} 
+%\secondnote{These authors contributed equally to this work.}
+% The commands \thirdnote{} till \eighthnote{} are available for further notes
+
+%\simplesumm{} % Simple summary
+
+%\conference{} % An extended version of a conference paper
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{\textit{Introduction} Irritable bowel syndrome (IBS) is characterized as a disorder of the gut-brain interaction (DGBI). Here we explored the presence of problems related to executive function (EF) in patients with IBS and tested the relative importance of cognitive features involved in EF. \textit{Methods} A total of 44 patients with IBS and 22 healthy controls (HCs) completed the Behavior Rating Inventory of Executive Function (BRIEF-A), used to identify nine EF features. The PyCaret 3.0 machine learning library in Python was used to explore the data,  generate a robust model to classify patients with IBS versus HCs, and identify the relative importance of the EF features in this model. The robustness of the model was evaluated by training the model on a subset of data and testing it on the unseen, hold-out dataset. \textit{Results} The explorative analysis showed that patients with IBS reported significantly more severe EF problems than the HC group on measures of working memory function, initiation, cognitive flexibility, and emotional control. Impairment at a level in need of clinical attention was found in up to 40\% on some of these scales. When the nine EF features were used as input to a collection of different binary classifiers, the eXtreme Gradient Boosting algorithm (XGBoost) showed superior performance. The working memory subscale was consistently selected with the strongest importance in this model, followed by planning and emotional control. 
+The goodness of the machine learning model was confirmed in an unseen dataset by correctly classifying 85\% of the IBS patients. 
+\textit{Conclusion}: The results showed the presence of EF-related problems in patients with IBS, with a substantial impact of problems related to working memory function. These results suggest that EF should be part of an assessment procedure when a patient presents other symptoms of IBS and that working memory function should be considered a target when treating patients with the disorder. Further studies should include measures of EF as part of the symptom cluster characterizing patients with IBS and other DGBIs. }
+
+% Keywords
+\keyword{gut-brain axis, IBS, Executive function, BRIEF-A, Machine-learning, Feature-importance} 
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+%\PACS{J0101}
+%\MSC{}
+%\JEL{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Diversity
+%\LSID{\url{http://}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Applied Sciences
+%\featuredapplication{Authors are encouraged to provide a concise description of the specific application or a potential application of the work. This section is not mandatory.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Data
+%\dataset{DOI number or link to the deposited data set if the data set is published separately. If the data set shall be published as a supplement to this paper, this field will be filled by the journal editors. In this case, please submit the data set as a supplement.}
+%\datasetlicense{License under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Toxins
+%\keycontribution{The breakthroughs or highlights of the manuscript. Authors can write one or two sentences to describe the most important part of the paper.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Encyclopedia
+%\encyclopediadef{For entry manuscripts only: please provide a brief overview of the entry title instead of an abstract.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Advances in Respiratory Medicine
+%\addhighlights{yes}
+%\renewcommand{\addhighlights}{%
+
+%\noindent This is an obligatory section in “Advances in Respiratory Medicine”, whose goal is to increase the discoverability and readability of the article via search engines and other scholars. Highlights should not be a copy of the abstract, but a simple text allowing the reader to quickly and simplified find out what the article is about and what can be cited from it. Each of these parts should be devoted up to 2~bullet points.\vspace{3pt}\\
+%\textbf{What are the main findings?}
+% \begin{itemize}[labelsep=2.5mm,topsep=-3pt]
+% \item First bullet.
+% \item Second bullet.
+% \end{itemize}\vspace{3pt}
+%\textbf{What is the implication of the main finding?}
+% \begin{itemize}[labelsep=2.5mm,topsep=-3pt]
+% \item First bullet.
+% \item Second bullet.
+% \end{itemize}
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+The rich  two-way communication between the central nervous system (CNS) and the gastrointestinal (GI) tract plays a crucial role in many aspects of human health \cite{Mayer2022}. It has become essential to understand symptom patterns in patients with functional disorders - commonly referred to as disorders of the gut-brain interaction  (DGBI) \cite{sperber2021worldwide}, as well as central nervous system disorders \cite{dinan2017brain}.
+
+Irritable bowel syndrome (IBS) is the most prevalent disorder categorized within the DGBI umbrella \cite{vandvik2006prevalence}. It is a disorder defined by the Rome IV criteria as chronically recurring abdominal pain at least 1 day per week in the last three months plus two or more of the following criteria: changes associated with defecation, frequency of stool, or form of stool \cite{schmulson2017new}. With a high prevalence and by putting a significant burden on patients, relatives, healthcare services, and society \cite{canavan2014economic, corsetti2017global, Fraendemark2018}, it is surprising that the pathophysiology of IBS is still incompletely understood \cite{black2020functional,drossman2002aga, hillestad2022gut}. The gut-brain axis paradigm has, however, provided a valuable model to understand the close associations between pathophysiological and psychological aspects of IBS. By this, alertness is not only given to the discomfort associated with the gastrointestinal (GI) symptoms used to define the disorder but includes symptoms associated with psychological distress and neuropsychiatric disorders \cite{madva2023psychiatric}. 
+
+A high co-occurrence of anxiety and depression in patients with IBS is well known. This association was recently underscored in a study of a large sample of hospitalized patients with IBS, where up to 40\% showed anxiety, followed by a high percentage with depression and suicidal ideation/attempts \cite{tarar2023burden}. Although a diagnosis of anxiety and depression is not present 
+in all patients with IBS, psychological distress associated with the disorder can mechanistically be explained by the bidirectional communication between the gut and the brain, including signaling via the hypothalamic-pituitary-adrenal axis (HPA-axis) \cite{tarar2023burden}. Symptoms of anxiety and depression thus seem to be interwoven as  part of the clinical as well as the pathophysiological picture characterizing patients with IBS \cite{midenfjord2019anxiety}, with 
+direct as well as indirect effects on the GI symptoms \cite{sibelli2016systematic} and their severity \cite{kutschke2022relationships}. 
+Screening for anxiety and depression should therefore always be part of a clinical assessment of patients presenting symptoms of IBS, and the level and characteristics of psychological distress should be taken into account when treating patients who have the disorder \cite{kamp2023symptom}.   
+
+
+Cognitive function, on the other side, is less well-studied in patients with IBS and other DGBIs in spite of its close relationship to emotional function (see e.g., \cite{kriesche2022neurocognitive}) and its key role in a gut-brain perspective. Cognitive function with its neuronal substrate has been related to the dynamics of specific integrated networks in the brain \cite{Stuss2000, sporns2022structure, colom2022human}, and also to the gut microbiome \cite{salami2021interplay, tooley2020effects}, referring to a community of trillions of microorganisms (bacteria, fungi, viruses) residing within the human gastrointestinal tract. These microorganisms are commonly referred to as "gut microbiota", and are characterized by their composition, diversity, mutualistic relationships, spatial distribution, and dynamic colonization. By this, they influence health and behavior \cite{jarchum2011regulation}, including cognitive function \cite{tooley2020effects}.
+In a 2019 review of twelve studies on cognitive function in IBS patients, Lam et al. \cite{lam2019cognitive}  reported impairment related to memory, attention, and executive function, but the  studies were characterized by several methodological shortcomings and conflicting results. Impaired performance on psychometric tests of attention and executive function was, however, confirmed by Wong et al. \cite{wong2019nature} in a study presented the same year. Executive function (EF) is an umbrella term that denotes cognitive processes of importance for problem-solving and decision tasks. EF is thus responsible for controlling and regulating most mental activities and refers to a set of higher-order cognitive processes of importance in all goal-directed behavior \cite{diamond2013, Gilbert2008}. This shows that cognitive and executive functions are interconnected. By this, EF enables us to plan, be attentive to ongoing activities and tasks, recall given instructions, and is important when we are in need to allocate attentional resources to resolve certain emotions, thoughts, and behavior.  
+
+These findings motivated the present study to investigate the presence and characteristics of EF in patients with IBS. This study is part of a larger umbrella project 
+ \cite{berentsen2020study}, which includes patients with IBS and healthy controls (HCs). Here we included all participants who completed the adult version of the Behavior Rating Inventory of Executive Function (BRIEF-A). The aim was to identify the differential importance of these features when classifying a patient with IBS versus HC. As this is not known from previous studies, we selected a data analytic approach without specific predefined hypotheses. 
+More specifically, we used a machine-learning framework in Python to explore the data, classify IBS patients versus HCs, and assess feature importance. The first step was to search for a good classification model applied to data from multiple self-reported EF features. By using multiple linear and non-linear classifiers in a cross-validation scheme we searched for a well-performing model. This model was used to identify and assess the most influential EF features. The model was trained on a subset of the data, to enable testing the model in a hold-out data set. By this, we take into consideration that the validity of feature importance provided by a trained model is dependent on how well the model performs on unseen data. Furthermore, the procedure is highly relevant when concluding a study with a relatively small number of participants, as it would help us to evaluate the generalizability of the results.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Materials and Methods}
+
+\subsection{Participants}
+
+The participants were part of the Bergen Brain-Gut-Microbiota (B-BGM) project at Haukeland University Hospital, Bergen, Norway, recruited through an outpatient clinic at the hospital, social media, a local newspaper, and flyers. Information was provided on the project’s website (https://braingut.no), and each potential patient was individually informed and screened before inclusion. They should all be between 18 and 65 years of age, an age range selected to make the sample comparable to previous local studies; the IBS patients should meet the Rome-IV criteria, have a score on the  IBS Severity Scoring System (IBS-SSS) corresponding to moderate to severe IBS, and a normal Norwegian diet the last three weeks before inclusion. Exclusion criteria included pharmacological treatment for IBS, a diagnosis of anxiety or depression, known neurological disease or neuropsychiatric disorder, treatment with antibiotics the last three months, specific diets (including a vegetarian and vegan diet), pregnancy, previous intestinal surgery, metallic implants not compatible with MRI, and travel outside Europe last three weeks or plan to travel in near future. All participants gave written consent to participate. For more information about the B-BGM project, see \cite{berentsen2020study}. 
+
+
+\subsection{Measures}
+\subsubsection{Measures used to describe the participants}
+Age and gender were self-reported by the participants.  Information about the severity of IBS symptoms and symptoms of anxiety and depression was available for a subgroup of the participants who completed the BRIEF-A questionnaire and will be presented as characteristics of the participants. IBS severity was assessed by the IBS- severity scoring system (IBS-SSS), a clinical assessment tool used to determine the severity of core GI-related IBS symptoms \cite{francis1997irritable}. The questionnaire consists of five items, each with a maximum score of 100 points, giving a total score of maximum 500. The severity of the IBS is defined as normal (< 75), mild (75-175), moderate (175-300), and severe (>300). Most of the HCs obtained a score below 75, and the IBS symptoms in patients with IBS were predominantly defined as moderate or severe (see Figure 1b). 
+Symptoms of anxiety and depression were assessed by self-reports on a Norwegian version of the Hospital Anxiety and Depression Scale (HADS) \cite{bjelland2002validity}.
+The questionnaire includes 14 items, asking the participants to evaluate specific behaviors and feelings during the last week. Each question carries a maximum score of three, with a maximum score of 42. The odd-numbered items in the questionnaire measure symptoms of anxiety and even-numbered items measure symptoms of depression, providing seven answers generating an anxiety- and a depression subscale, respectively, each with a maximum score of 21. 
+
+\subsubsection{Behavior Rating Inventory of Executive Function- Adult version (BRIEF-A)} 
+The Behavior Rating Inventory of Executive Function - Adult version (BRIEF-A) was used to assess core EF features. BRIEF-A is a 75-item self-report questionnaire developed to provide adults’ (18-90 years) perspectives on their executive functions in their everyday environment \cite{roth2005manual}. Overall, the BRIEF-A has shown good validity and reliability and is considered to give ecologically valid measures of EF across a wide range of medical and psychological conditions \cite{roth2013confirmatory}. All participants completed the paper version of the questionnaire. Their responses were plotted in a commercial program providing age-corrected standardized scores (T-scores with 50 as mean and SD = 10). A T-score is defined within the clinical range if equal to or above 65. The 75 items are used to define nine clinical subscales, named inhibition, shifting, emotional control, self-monitoring, initiation, working memory, plan/organize, task monitoring, and organization of materials. 
+
+
+
+\subsection{Explorative Data Analysis and the Machine Learning Framework}
+
+For this study, we employed the \textit{PyCaret} 3.0 library ({\small \url{https://pycaret.gitbook.io}}), a high-level, easy-to-use machine learning framework in Python, to facilitate the classification of IBS patients versus healthy controls. \textit{PyCaret}, which also includes \textit{Numpy}, \textit{Pandas}, and \textit{Scikit-learn}, streamlines the process of model development and evaluation by automating tasks such as data preprocessing, feature engineering, and model selection. Within the \textit{PyCaret} framework, we chose the eXtreme Gradient Boosting algorithm (\textit{XGBoost}) 
+due to its superior performance in various classification tasks, including medical applications \cite{chen2016}. \textit{XGBoost} is an advanced implementation of gradient-boosted decision trees that builds a series of weak decision tree models iteratively, combining them to generate a robust predictive model. The algorithm employs gradient boosting techniques to minimize the loss function by updating the model with gradients at each iteration, effectively reducing errors and improving classification accuracy (see e.g. {\small \url{https://xgboost.ai}} for more details).
+
+
+
+\noindent In short, the analysis workflow consisted of the following steps:
+
+\begin{itemize}
+    \item \textbf{Data preparation}: Imported the dataset(s), originally in \textit{SPSS}\texttt{.sav} format containing IBS patients and healthy control participants with features from multiple sources such as demographic information and reports on questionnaires. This step also included data cleaning and merging using the \textit{Pandas} data frame structure and functionality.
+    \item \textbf{Explorative data analysis}: Investigating and summarizing the general characteristics of the dataset e.g. feature distributions, correlations, and data visualization, employing functionality in \textit{ydata\_profiling} ({\small \url{https://github.com/ydataai/ydata-profiling}}) and \textit{autoviz} ({\small \url{https://github.com/AutoViML/AutoViz}}).
+    \item \textbf{Environment setup}: Initialized the \textit{PyCaret} environment by specifying the target variable ($y$) and predictor variables, and selecting the classification module. The data was randomly split ($70$\%/$30$\%) into a training set (\texttt{X\_train},  \texttt{y\_train}) and a test set (\texttt{X\_test}, \texttt{y\_test}). The first was used for training the model and identifying \textit{feature importance}, and the latter was used for the evaluation of classifier performance on unseen data in order to confirm \textit{feature importance} identified in the training set and to assess generalization ability.
+    \item \textbf{Model training and tuning}: Trained the \textit{XGBoost} model and compared it with other models within the \textit{PyCaret} framework using $10$-fold cross-validation to obtain the best model.
+    \item \textbf{Model evaluation}: Assessed, on the unseen test data, the classification performance of the best model (\textit{XGBoost}), using metrics such as accuracy, sensitivity, specificity, and area under the receiver operating characteristic curve (AUC).
+\end{itemize}
+
+\noindent The implementation of the complete workflow, the setup of the corresponding \texttt{conda} environment, the cleaned input dataset in \texttt{.csv} format, and code for all resulting tables and figures are available as \textit {Jupyter notebooks} at {\small \url{https://github.com/MMIV-ML/BRIEF-IBS}}.
+
+
+
+
+\subsection{Feature Importance: Permutation Importance and SHAP Values}
+
+To identify and assess the most influential features in the set of BRIEF-A predictors for the classification of IBS versus HC using \textit{XGBoost} in the training set, we compared two quite different feature importance methods: permutation feature importance and Shapley Additive Explanations (SHAP) values.
+
+\textit{Permutation feature importance} is a model-agnostic method to assess the contribution of each feature to the predictive performance of the model. It measures the decrease in model accuracy when the values of a specific feature are randomly permuted, thereby disrupting the relationship between the feature and the outcome. The greater the decrease in accuracy, the higher the importance of the feature \cite{breiman2001random}.
+
+\textit{SHAP values}, on the other hand, are based on cooperative game theory and provide a unified framework for interpreting the contribution of each feature to the prediction for a specific instance. The \textit{SHAP value} of a feature measures its average marginal contribution to the model's prediction across all possible feature combinations, ensuring that the contributions are fairly distributed among the features \cite{lundberg2020local}.
+
+We calculated permutation feature importance using the \texttt{permutation\_importance} function from the \textit{scikit-learn} library ({\small \url{https://scikit-learn.org}}). For \textit{SHAP values}, we employed the \textit{shap} library ({\small  \url{https://github.com/slundberg/shap}}) and computed \texttt{TreeSHAP} values specifically designed for tree-based models like \textit{XGBoost} (\cite{lundberg2020local}). A comparison of the two methods, permutation importance and SHAP values was performed to assess the consistency of feature importance rankings and to identify key factors that contribute to the classification of IBS patients versus healthy controls.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Results}
+
+\subsection{Characteristics of the participants}
+The BRIEF-A questionnaire was completed by 66 participants, 44 defined with IBS (77.3\% females) and 22 healthy controls (HCs) (68\% females). The mean age was 35 (10.2) in the IBS group and 36.1 (12.0) in the HC group. The differences between the groups were non-significant for gender and age (\emph{p} > .05, Figure 1a). 
+
+\begin{figure}[H]
+\begin{tabular}{ll}
+(a) & (b) \\
+\includegraphics[width=6.5cm]{Figs/Age_dist_IBS_and_HC_in_M_vs_F.pdf} &
+\includegraphics[width=6.5cm]{Figs/IBS-SSS_dist_in_IBS_vs_HC.pdf}
+\end{tabular}
+\caption{(a) The overlapping age distributions of males and females in the  IBS- (n=44) and the HC (n=22) group. (b) Distribution of IBS-SSS scores in the IBS- (n=40) and the HC (n=17) group. The vertical dashed line denotes the mean IBS-SSS score in each group.}
+\end{figure} 
+
+
+
+In the participants with BRIEF-A scores who also have results on the HADS scores and the IBS-SSS scale, the difference in severity scores between the IBS and HC groups were all statistically significant on a Welsch's t-test (\emph{p} <.001), with clear separation in their distributions as measured by Cohen's d (Table~2). The distribution of IBS-SSS scores is also illustrated in Figure 1b. 
+
+
+
+\begin{table}[H]
+\begin{center}
+\include{table_2_new} 
+\caption{Age and the HADS and IBS-SSS scores in the IBS- ($n=40$)  and HC ($n=17$) group.}
+\end{center}
+\end{table}
+
+
+\subsection{Distributions of EF features in the IBS and HC groups} 
+The scores (according to official norms \cite{roth2005manual}) on all BRIEF-A subscales are shown in Table~1. 
+Results from an independent samples Welsch's t-test showed higher scores in the IBS than HC group on the emotional control, initiation, shifting, and working memory subscales. The high effect sizes (Cohen's d) on these measures should be noted, with the highest value for the working memory subscale.
+
+
+\begin{table}[H]
+\begin{center}
+\include{table_1_new} 
+\caption{BRIEF-A scores in the IBS- ($n=44$) and HC ($n=22$) group.}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+
+
+\subsection{Correlations and distributions of EF features in the IBS and HC groups} 
+
+
+
+The pairwise scatterplots in Figure 2 show the distributions of the nine BRIEF-A subscores and the least square regression lines for the IBS- (in blue) and the HC group (orange) for all possible subscale pairs. Overall, the largest discrimination is found on the distribution plots for the working memory and shifting subscales, and the slopes of the regression lines are similar across the two groups.  In the IBS group, we find a pattern with the strongest pairwise correlations (\emph{r} > .60) between self-monitoring and inhibition, emotional control and shifting, task monitoring and planning, and between organization and planning, and organization and task monitoring. The strongest correlations (\emph{r} = .60) in the HC group were found between planning and task monitoring, added by a correlation at the same level for the pair of self-monitoring and emotional control. 
+
+
+
+\begin{figure}[H]
+\includegraphics[width=14.5cm]{Figs/BRIEF_items_sns_pairplot.pdf}
+\caption{Pairwise scatterplots between all BRIEF-A subscales color-coded separately for the IBS- and the HC group. The distributions are fitted with a least squares regression line with a shaded confidence interval. The diagonal entries show the group-specific kernel density estimated distributions for each BRIEF-A subscore.}
+\end{figure}  
+
+
+
+
+\subsection{Model training and tuning}
+
+Figure 3 shows the classifier performance of the training data selected when the 10-fold cross-validation procedure was employed within the \textit{PyCaret} framework. 
+The figure shows that the \textit{XGBoost} algorithm was selected as the model with superior performance, with a success of classifying IBS versus HCs at an accuracy level of 81\% across the folds. The \textit{XGBoost} algorithm was therefore used to identify and assess the most influential features in the set of BRIEF-A subscales.
+
+
+\begin{figure}[H]
+\begin{tabular}{ll}
+. \hspace{-18mm} & \includegraphics[width=16.0cm]
+{Figs/BRIEF-IBS-Figs_compare_models.pdf}
+\end{tabular}
+\vspace{-8mm}
+\caption{The mean metrics across each of the $10$ folds in the training set. The ranking is defined with respect to mean \textit{Accuracy} across the folds where the mean performance measures of the other metrics (AUC, Recall, Precision, F1, Kappa, and MCC) for the different classifiers provided by PyCaret (left column) are given. Each classifier is applied on the same sets of folds, generated randomly from the training set, in our 10-fold cross-validation scheme. The most prominent mean values among the performance metrics are highlighted in yellow. Due to its overall best performance, we selected the \textit{XGboost} classifier in the following analysis. Note, the \textit{dummy} classifier makes predictions that ignore the input features, e.g. returns the most frequent class label, serving as a baseline to compare against more complex classifiers.}
+\end{figure}
+
+
+
+\subsection{Feature Importance: Permutation Importance and SHAP Values}
+
+Figure 4 shows the feature importance identified by the following two methods: permutation feature importance and Shapley Additive Explanations (detailed description in the Method section). 
+The two models consistently ranked the working memory subscale at the top, followed by planning, emotional control, and inhibition. The importance of organization was given a lower weight when analyzed by the permutation than the \textit{SHAP} method. 
+
+\begin{figure}[H]
+\begin{tabular}{ll}
+(a) & (b) \\
+\includegraphics[width=6.0cm]{Figs/XGboost_BRIEF_permutation_feature_importance.pdf} & 
+\includegraphics[width=7.0cm]{Figs/XGboost_BRIEF_mean_SHAP_value.pdf}
+\end{tabular}
+\caption{(a) Ranking of the permutation feature importance computed from the training set. (b) Ranking of mean absolute SHAP values computed in the training set. Note that the top three rankings are the same regarding order and qualitative differences for both the permutation importance method and the SHAP values from cooperative game theory.}
+\end{figure} 
+
+
+Figure 5 displays the partial dependency plots (PDP) and individual conditional expectation (ICE) plots for each of the nine BRIEF-A subscales. These plots are valuable tools to gain insights into the often non-intuitive, non-linear, and complex relationship between feature values in their observable range and corresponding predicted outcome.
+The change in predicted outcome in each individual when the BRIEF-A subscale changes, shown by the thin lines in Figure 5, can be large within a small interval of feature values.
+Negative changes are noted for the self-monitor and organization subscales, and a steep change is shown for emotion regulation and planning at a score between 50 and 60. The steepest changes in prediction are found for the working memory subscale, where all participants show a change even below the cutoff (i.e. 65) commonly used to alert a clinician in such cases.
+
+
+\begin{figure}[H]
+\includegraphics[width=13.0cm]{Figs/BRIEF_all_items_PDP.pdf} 
+\caption{\textit{Partial dependence plots} (PDP) and \textit{individual conditional expectation} (ICE) plots for each of the nine BRIEF-A subscales. The collection ($n=46$) of thin traces across the range of BRIF-A values, one line per subject in the training set, shows how the subject's prediction changes when a feature (BRIEF-A subscale) changes (typically within the interval $30$ to $80$). Note that some of the traces are visually inseparable. The predicted outcome on the vertical axes denotes a continuous scale between $0$ (=HC) and $1$ (=IBS).}
+\end{figure} 
+
+
+\subsubsection{Model evaluation in the test set}
+The confusion matrix presented in the left panel of Figure 6 shows that 85\% of the patients with IBS and 67\% of the healthy controls included in the unseen test set were correctly classified. Information about the IBS-SSS scores shows that two patients with IBS with a high score are predicted as HCs and that the three HCs were falsely classified as IBS in spite of a low severity level of IBS. 
+
+
+The panel to the right in Figure 6 added a clinically important piece of information supporting the importance of working memory in patients with IBS. According to a cutoff score of BRIEF-A (i.e., equal to or above 65), we find that more than 40\% of the patients with IBS reported a score within this clinical range on both these scales. The figure for planning was at a similarly high level, with several other scales showing that between 20 - 25\% of the participants with IBS reported such high scores. 
+
+
+
+\begin{figure}[H]
+\begin{tabular}{ll}
+(a) & (b) \\
+\includegraphics[width=6.0cm]{Figs/XGboost_prediction_from_BRIEF_CM_heatmap_HC_IBS.pdf} &
+\includegraphics[width=7.0cm]{Figs/BRIEF_items_cutoff_65_IBS_vs_HC.pdf}
+\end{tabular}
+\caption{(a) Confusion matrix for the binary \textit{XGBoost} classification of IBS versus HC based on the $9$-dimensional feature vectors from the BRIEF domains. (b) BRIF item-wise percentage of clinically impaired participants in the IBS- and HC group, i.e. percentage of BRIEF variables $\geq \mbox{cutoff} (= 65)$ in the IBS (n=44) and HC (n=22) groups.}
+\end{figure} 
+
+
+    
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+The present study showed that patients with IBS reported significantly more severe problems than healthy controls on several BRIEF-A subscales. More than 40\% of the patients reported problems on the working memory and planning subscales at a severity level that should lead to clinical attention and action, followed by high percentages for problems related to flexibility and emotional control. 
+By using multiple classifiers in a cross-validation scheme, the \textit{XGBoost} model was found to be the superior model. Two methods for feature importance selection consistently teased out the following most important EF features: working memory, planning, and emotional control. 
+ A more detailed inspection of the partial dependency plots showed that scores on some of the BRIEF-A subscales (organization, self-monitoring, and inhibition) had a negative impact in the \textit{XGBoost} model, while the impact was strong for the working memory subscale, even at a cutoff below the one commonly used to indicate severe problems in a clinical setting (i.e., 65). Finally, the feature importance provided by the trained model was confirmed by testing the trained \textit{XGBoost} model on the unseen hold-out data set which correctly classified 85\% of the patients with IBS. 
+  
+
+
+We believe that the present study contributes by raising concerns about the presence of problems related to EF in patients with IBS. By this, it adds information to a research field where previous studies have shown mixed results \cite{lam2019cognitive}. The present results are, however, similar to the ones presented by Wong et al. \cite{wong2019nature}, reporting impairment on a psychometric test of EF (Wisconsin Card Sorting Test (WCST)). Previous studies have shown a weak correlation between self-reported and performance-based results \cite{meltzer2017association},  and discussions about their relative ecological validity are still ongoing  \cite{malo2022psychological}. Still, we speculate if the strong working memory component of EF shown in the present study may have influenced the WCST performance presented by Wong et al. This speculation calls for further studies on working memory function in patients with IBS that include both self-reported and psychometric measures.
+
+The strong feature importance of the working memory function in the classification model is worth further comments. The importance of working memory was already shown in the explorative part of the present study. Then, its importance was confirmed across several analytic methods. The partial dependency plot even indicated that IBS could be identified even with scores below the clinical cutoff score of 65.  
+Working memory refers to our ability to actively maintain information relevant when performing a cognitive task \cite{baddeley2012working, d2015cognitive}, and is thus crucial for problem-solving and planning in situations where we need to filter out irrelevant information. This should be of importance to patients with IBS, who experience chronically recurring abdominal pain or cramping, bloating, excess gas \cite{drossman2022rome}, and other related sensory and psychological discomforts that are hard to ignore. 
+
+ The impact of working memory on everyday functioning is further emphasized by being a fundamental component of EF and other cognitive domains and  \cite{baddeley2012working}. Some have also pointed to the dependencies between working memory and other aspects of EF \cite{cowan2008differences}. This relational perspective on EF was partly supported by the present study. The importance of working memory problems was followed by problems related to planning and emotional regulation. Direct as well as indirect consequences of a pattern of such problems on IBS symptomatology are expected, but as far as we know, not been studied. It is however well known that working memory can be impaired due to stress \cite{oei2006psychosocial}, and are associated with problems in patients with IBS related to fatigue \cite{han2016fatigue}, sleep problems \cite{wang2018prevalence} and not at least anxiety and/or depression \cite{moran2016anxiety}.  
+ 
+ As pointed out in the introduction, psychological distress is common among patients with IBS and may affect and be affected by the bilateral communication between the gut and the brain. Psychological distress, commonly defined by symptoms of anxiety and depression, therefore seems to be interwoven as part of the symptomatology of the disorder \cite{midenfjord2019anxiety}. Its importance as predisposing and perpetuating factors shows that symptoms of anxiety and depression are important targets for treatment \cite{kutschke2022relationships}. Anxiety sensitivity, an often enduring tendency to believe that symptoms are harmful to the body, is a more specific distress that has been associated with IBS \cite{sugaya2013irritable}. Such oversensitivity and physiological anxiety have been associated with reports of problems on all BRIEF-A subscales \cite{meltzer2017association}.  According to Otto et al., \cite{otto2016anxiety} working memory function is an EF feature that is essential to health-related consequences of anxiety sensitivity: low function tends to enhance the risk both for the initiation and/or maintenance of negative health behavior. Low working memory may interfere with effortful strategies used to obtain the self-control needed to resist maladaptive and disturbing sensory, emotional, and social stimuli in the everyday life of a patient with IBS. Anxiety sensitivity in patients with IBS is by this relevant to the results of the present study, but this topic indeed deserves further studies.
+ 
+Although anxiety sensitivity and low working memory function may be disabling, they are also targets of several treatment programs \cite{otto2016anxiety}. Such programs were recently presented by the Rome working team on gut-brain behavior therapies \cite{keefer2022rome}. Psychological interventions such as cognitive behavioral therapy (CBT) have been reported to be effective for treating patients with IBS \cite{sugaya2021cognitive}, even with pure online administration \cite{kim2022internet}. Other studies underscore the importance of taking cognitive-emotional pre-treatment characteristics into account when deciding on a treatment option for a given patient \cite{sarter2021cognitive}. The present study underscores the importance of assessing EF and taking the results into account when providing treatment programs like CBT as well as those involving diet restrictions for patients with IBS. All these interventions put a strong load on cognitive functions like planning, initiating, task monitoring, organization of materials, working memory function as well as emotional control. In other words, abilities related to the EF features assessed in the current study. From the results of the present study, we would thus add options that more directly target EF, such as the Goal Management Training programs. It has a focus on challenges in everyday life and has successfully been included as part of training programs for psychiatric and somatic disorders (e.g., \cite{jensen2021exploratory, boyd2022pilot, haugen2022randomized}). The program may help a patient with IBS to cope with competing demands or senses,  like pain and other disturbing symptoms that follow the bidirectional involvement of the gut and the brain in patients with IBS. By combining this with more traditional treatment programs, such as mindfulness, the patient may learn strategies both to regulate alertness and maintain executive control \cite{robertson1995sustained}. And the effect may be even more augmented by adding treatments like fecal transplantation \cite{Magdy2021}). 
+
+
+\subsection{Strengths and limitations}
+To our knowledge, this is the first study to directly investigate reports of EF-related problems in the daily life of patients with IBS. By this, the potential to improve awareness of these problems is a main strength of the present study. By testing a cross-validated model on an unseen data set, the trust in the relative importance of the working memory feature of EF is strongly improved. 
+
+ Several limitations should be noted. The small sample size is a major limitation. It prevents investigations of symptom patterns in subgroups of patients (e.g., those defined by stool consistency). It also 
+ hampers further investigation of specific hypotheses regarding the relationships between EF features and other characteristics of patients with IBS, such as the presence and severity of anxiety and depression, IBS severity, and also gender differences. This was, however, one of the reasons for using a data-driven approach in our study. Regarding anxiety and depression, it should be noted that participants with one or both of those diagnoses were excluded from entering the study. The gender bias in the disfavor of males should also be considered as a limitation, even though this probably reflects the general predominance of females among patients with IBS. Regarding IBS symptoms, the study employed strict inclusion and exclusion criteria leaving us with a sample where the IBS-SSS score could be used to separate the group. Future studies should therefore consider inclusion of participants along the full range of IBS-SSS scores.  
+
+ The restriction of analysis to EF features may also be considered a limitation. This approach was, however, selected to identify the relative importance of different aspects of the cognitive processes involved in EF. Finally, although there are arguments for the ecological validity of self-reported EF by providing insights into the real-world function, they are also vulnerable to response biases. 
+
+
+\section{Conclusions}
+
+The present study contributes by documenting EF-related problems in a large subgroup of patients with IBS, and by emphasizing the importance of problems related to working memory function. Health professionals should be aware of EF-related problems and associated challenges in everyday activities, and should also be aware of probable effects on adherence to treatment programs. The results should inspire further studies to include EF as one of the many features integrated into the clinical symptom pattern of IBS and other DGBIs. Longitudinal studies are definitely called for to obtain a better understanding of factors predicting healthy gut-brain communication.
+%\begin{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Figures, Tables, and Schemes}
+\begin{comment}
+All figures and tables should be cited in the main text as Figure~\ref{fig1}, Table~\ref{tab1}, etc.
+
+\begin{table}[H] 
+\caption{Results in the IBS and HC group.\label{tab1}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCCC}
+\toprule
+\textbf{Clinical scale}	& \textbf{Mean IBS/HC}	& \textbf{SD IBS/HC}  &  \textbf{p-value} & \textbf{effect-size}\\
+\midrule
+HADS total		& 13.3/4.4		& 5.73/3.77  & <.001 & 1.69\\
+HADS anxiety	& Data			& Data &&\\
+HADS depression	& Data			& Data &&\\
+IBS-SSS	& 275/29.9 &  74.3/29.6 & <.001  & 3.79\\
+RBANS	& 91.7/103.0D	& 14.0/14.5    &  .006  &  .778\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\begin{figure}[H]
+\includegraphics[width=10.5 cm]{Figs/Fig_1_pptx.pdf}
+\caption{Flowchart including characteristics of the whole sample and the subgroups of IBS and healthy controls (HC)}
+%\caption{This is a figure. Schemes follow the same formatting. If there are multiple panels, they should be listed as: (\textbf{a}) Description of what is contained in the first panel. (\textbf{b}) Description %of what is contained in the second panel. Figures should be placed in the main text near to the first time they are cited. A caption on a single line should be centered.\label{fig1}}
+\end{figure}   
+\unskip
+
+\begin{table}[H] 
+\caption{This is a table caption. Tables should be placed in the main text near to the first time they are~cited.\label{tab1}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCC}
+\toprule
+\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+\midrule
+Entry 1		& Data			& Data\\
+Entry 2		& Data			& Data \textsuperscript{1}\\
+\bottomrule
+\end{tabularx}
+\noindent{\footnotesize{\textsuperscript{1} Tables may have a footer.}}
+\end{table}
+
+The text continues here (Figure~\ref{fig2} and Table~\ref{tab2}).
+
+% Example of a figure that spans the whole page width. The same concept works for tables, too.
+\begin{figure}[H]
+\begin{adjustwidth}{-\extralength}{0cm}
+\centering
+\includegraphics[width=15.5cm]{Figs/Fig_1_pptx.pdf}
+\end{adjustwidth}
+\caption{Flowchart including characteristics of the whole sample and the subgroups of IBS and healthy controls (HC)}
+\end{figure}  
+
+\begin{table}[H]
+\caption{This is a wide table.\label{tab2}}
+	\begin{adjustwidth}{-\extralength}{0cm}
+		\newcolumntype{C}{>{\centering\arraybackslash}X}
+		\begin{tabularx}{\fulllength}{CCCC}
+			\toprule
+			\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}     & \textbf{Title 4}\\
+			\midrule
+\multirow[m]{3}{*}{Entry 1 *}	& Data			& Data			& Data\\
+			  	                   & Data			& Data			& Data\\
+			             	      & Data			& Data			& Data\\
+                   \midrule
+\multirow[m]{3}{*}{Entry 2}    & Data			& Data			& Data\\
+			  	                  & Data			& Data			& Data\\
+			             	     & Data			& Data			& Data\\
+                   \midrule
+\multirow[m]{3}{*}{Entry 3}    & Data			& Data			& Data\\
+			  	                 & Data			& Data			& Data\\
+			             	    & Data			& Data			& Data\\
+                  \midrule
+\multirow[m]{3}{*}{Entry 4}   & Data			& Data			& Data\\
+			  	                 & Data			& Data			& Data\\
+			             	    & Data			& Data			& Data\\
+			\bottomrule
+		\end{tabularx}
+	\end{adjustwidth}
+	\noindent{\footnotesize{* Tables may have a footer.}}
+\end{table}
+
+%\section{Patents}
+
+%This section is not mandatory, but may be added if there are patents resulting from the work reported in this manuscript.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\vspace{6pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optional
+
+{\color{blue}
+\section{Supplementary material}
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\authorcontributions{``Conceptualization, A.J.L., B.B. and A.L.; methodology, A.J.L., B.B., A.L.; formal analysis, A.L. and A.J.L.; data collection A.J.L, E.M.H., G.A.L., E.S., T.H., B.B.B. and A.J.L., ; writing---original draft preparation A.J.L.; review and editing, A.L., E.M.H., J.B., T.E.J., G.A.L., E.S., T.H., B.B.; visualization, A.L.;  project administration, B.B.; funding acquisition, T.H., A.L. All authors have read and agreed to the published version of the manuscript.''.}
+
+\funding{This research was funded by 
+Research Council of Norway (grant ID FRIMED-BIO276010) and Helse Vest's Research Funding (grant ID HV912243) and by the Trond Mohn Research Foundation, grant number BFS2018TMT0, and from The Research Council of Norway, project number 294594.}
+
+\institutionalreview{The B-BGM-project was approved by the southeast Regional Ethical Committees (REC) for medical and health research ethics in Norway (REK2015-01621). All participants provided written consent to participate, and the project is conducted in accordance with the ethical requirements from the Declaration of Helsinki. The project is registered at www.clinicaltrials.gov (\#NCT04296552). }
+
+\informedconsent{Informed consent was obtained from all subjects involved in the study.}
+
+\dataavailability{The implementation of the complete workflow, the setup of the corresponding \texttt{conda} environment, the cleaned input dataset in \texttt{.csv} format, and code for all resulting tables and figures are available as \textit {Jupyter notebooks} at {\small \url{https://github.com/MMIV-ML/BRIEF-IBS}}.} 
+
+\acknowledgments{%In this section you can acknowledge any support given which is not covered by the author contribution or funding sections. This may include administrative and technical support, or donations in kind (e.g., materials used for experiments).
+We sincerely thank all patients and healthy volunteers for their participation in the Bergen Brain-Gut Microbiota (B-BGM) project. We also thank the research nurses Stine Martinussen and Veronika Ludviksen and Line Haga for their support, and Dr. Noman Haleem for help in accessing the data file used in the present study.}
+
+\conflictsofinterest{The authors declare no conflict of interest.} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional
+%\sampleavailability{Samples of the compounds ... are available from the authors.}
+
+%% Only for journal Encyclopedia
+%\entrylink{The Link to this entry published on the encyclopedia platform.}
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+EF & Executive function\\
+IBS & Irritable bowel syndrome\\
+GI & Gastrointestinal\\
+DGBI & Disorders of the gut-brain interaction\\
+HADS & Hamilton Anxiety and Depression Scale\\
+RBANS & Repeatable Battery for the Assessment of Neuropsychological Status\\
+IBS-SSS & IBS Severity Scoring System\\
+XGboost &  eXtreme Gradient Boosting\\
+
+\end{tabular}
+}
+
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional
+\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+\section[\appendixname~\thesection]{}
+\subsection[\appendixname~\thesubsection]{}
+The appendix is an optional section that can contain details and data supplemental to the main text---for example, explanations of experimental details that would disrupt the flow of the main text but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data are shown in the main text can be added here if brief, or as Supplementary Data. Mathematical proofs of results not central to the paper can be added as an appendix.
+
+\begin{table}[H] 
+\caption{This is a table caption.\label{tab5}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCC}
+\toprule
+\textbf{Title 1}	& \textbf{Title 2}	& \textbf{Title 3}\\
+\midrule
+Entry 1		& Data			& Data\\
+Entry 2		& Data			& Data\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section[\appendixname~\thesection]{}
+All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{References}
+
+% Please provide either the correct journal abbreviation (e.g. according to the “List of Title Word Abbreviations” http://www.issn.org/services/online-services/access-to-the-ltwa/) or the full name of the journal.
+% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here. 
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+%\bibliography{your_external_BibTeX_file}
+
+%=====================================
+% References, variant B: internal bibliography
+%=====================================
+\begin{thebibliography}{999}
+% Reference 1
+
+\bibitem[Author1(ye\ef-journal]
+Author~1, T. The title of the cited article. {\em Journal Abbreviation} {\bf 2008}, {\em 10}, 142--149.
+% Reference 2
+\bibitem[Author2(year)]{ref-book1}
+Author~2, L. The title of the cited contribution. In {\em The Book Title}; Editor 1, F., Editor 2, A., Eds.; Publishing House: City, Country, 2007; pp. 32--58.
+% Reference 3
+\bibitem[Author3(year)]{ref-book2}
+Author 1, A.; Author 2, B. \textit{Book Title}, 3rd ed.; Publisher: Publisher Location, Country, 2008; pp. 154--196.
+% Reference 4
+\bibitem[Author4(year)]{ref-unpublish}
+Author 1, A.B.; Author 2, C. Title of Unpublished Work. \textit{Abbreviated Journal Name} year, \textit{phrase indicating stage of publication (submitted; accepted; in press)}.
+% Reference 5
+\bibitem[Author5(year)]{ref-communication}
+Author 1, A.B. (University, City, State, Country); Author 2, C. (Institute, City, State, Country). Personal communication, 2012.
+% Reference 6
+\bibitem[Author6(year)]{ref-proceeding}
+Author 1, A.B.; Author 2, C.D.; Author 3, E.F. Title of presentation. In Proceedings of the Name of the Conference, Location of Conference, Country, Date of Conference (Day Month Year); Abstract Number (optional), Pagination (optional).
+% Reference 7
+\bibitem[Author7(year)]{ref-thesis}
+Author 1, A.B. Title of Thesis. Level of Thesis, Degree-Granting University, Location of University, Date of Completion.
+% Reference 8
+\bibitem[Author8(year)]{ref-url}
+Title of Site. Available online: URL (accessed on Day Month Year).
+\end{thebibliography}
+
+% If authors have biography, please use the format below
+%\section*{Short Biography of Authors}
+%\bio
+%{\raisebox{-0.35cm}{\includegraphics[width=3.5cm,height=5.3cm,clip,keepaspectratio]{Definitions/author1.pdf}}}
+%{\textbf{Firstname Lastname} Biography of first author}
+%
+%\bio
+%{\raisebox{-0.35cm}{\includegraphics[width=3.5cm,height=5.3cm,clip,keepaspectratio]{Definitions/author2.jpg}}}
+%{\textbf{Firstname Lastname} Biography of second author}
+
+% For the MDPI journals use author-date citation, please follow the formatting guidelines on http://www.mdpi.com/authors/references
+% To cite two works by the same author: \citeauthor{ref-journal-1a} (\citeyear{ref-journal-1a}, \citeyear{ref-journal-1b}). This produces: Whittaker (1967, 1975)
+% To cite two works by the same author with specific pages: \citeauthor{ref-journal-3a} (\citeyear{ref-journal-3a}, p. 328; \citeyear{ref-journal-3b}, p.475). This produces: Wong (1999, p. 328; 2000, p. 475)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% for journal Sci
+%\reviewreports{\\
+%Reviewer 1 comments and authors’ response\\
+%Reviewer 2 comments and authors’ response\\
+%Reviewer 3 comments and authors’ response
+%}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\PublishersNote{}
+\end{adjustwidth}
+\end{comment}
+\reftitle{References}
+
+\bibliographystyle{Frontiers-Harvard}
+\bibliography{BRIEF.bib}
+\end{document}
+
+

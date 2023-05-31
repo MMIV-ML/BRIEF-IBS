@@ -1,0 +1,40 @@
+name: pycaret3
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - ipython
+  - jupyterlab
+  - ipykernel
+  - ipywidgets
+  - jupyter
+  - openpyxl
+  - pyreadstat
+  - seaborn
+  - pip:
+    - interpret-community
+    - pycaret[full]
+    - ydata-profiling[notebook]
+
+    
+
+
+# To install environment (once)
+# conda env update -f environment.yml
+# conda activate pycaret3
+# conda deactivate   # back to (base)
+
+# To update the pycaret3 environment (if new versions become available):
+# conda update -n pycaret3 --all      # To update all packages in the named environment
+
+# To remove and reinstall the pycaret environment (if installation problems):
+# conda deactivate
+# conda env remove -n pycaret3
+#   <fix iinstallation>
+# e.g. pip install --upgrade pycaret
+## Then, recreate the conda environment pycaret3 as above
+
+## OPTIONAL: To install a jupyter kernel PYCARET3
+# python -m ipykernel install --user --name pycaret3 --display-name "PYCARET3"

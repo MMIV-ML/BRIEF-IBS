@@ -1,0 +1,17 @@
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Mac OS
+.DS_Store
+
+# Logs
+log.Logs
+
+# Catboost
+catboost_info
+
+# Reports
+*.html
+
+# Pickle files
+*.pkl
